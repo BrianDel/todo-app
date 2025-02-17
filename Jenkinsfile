@@ -12,8 +12,6 @@ pipeline {
                     // Download and install NVM
                     dir("${JENKINS_HOME}") {
                         sh 'curl -o ${JENKINS_HOME}/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh'
-                    } 
-                    dir("${WORKSPACE}") {
                       sh '''
                       unset NVM_DIR
                       echo 'NVM_DIR:'$NVM_DIR
@@ -42,7 +40,7 @@ pipeline {
                       nvm use 18
                       nvm ls
                       '''
-                    }
+                    } 
                 }
             }
         }
@@ -50,9 +48,11 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    sh 'cd $WORKSPACE'
-                    sh 'rm -rf ./package-lock.json'
-                    sh 'npm install --verbose'
+                    dir("${WORKSPACE}") {
+                      sh 'cd $WORKSPACE'
+                      sh 'rm -rf ./package-lock.json'
+                      sh 'npm install --verbose'
+                    }
                 }
             }
         }
