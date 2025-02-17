@@ -10,33 +10,40 @@ pipeline {
             steps {
                 script {
                     // Download and install NVM
-                        dir("${JENKINS_HOME}") {
-                            sh 'cd $JENKINS_HOME'
-                            sh 'echo here'
-                            sh 'pwd'
-                            sh 'curl -o ${JENKINS_HOME}/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh'
-                        }   // Add NVM to the environment
-                        sh '''
-                        unset NVM_DIR
-                        echo 'NVM_DIR:'$NVM_DIR
-                        '''
-                        sh '''
-                        export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-                        echo $NVM_DIR
-                        echo "export NVM_DIR=$NVM_DIR" >> ~/.bashrc
-                        cat ~/.bashrc
-                        echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bashrc
-                        cat ~/.bashrc
-                        '''
-                        
-                        // Source NVM and install Node.js
-                        sh '''
-                        source ~/.bash_rc
-                        nvm install 18
-                        nvm use 18
-                        nvm ls
-                        '''
-                  
+                    dir("${JENKINS_HOME}") {
+                        sh 'cd $JENKINS_HOME'
+                        sh 'echo here'
+                        sh 'pwd'
+                        sh 'curl -o ${JENKINS_HOME}/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh'
+                    }   // Add NVM to the environment
+                    sh '''
+                    unset NVM_DIR
+                    echo 'NVM_DIR:'$NVM_DIR
+                    '''
+                    sh '''
+                    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+                    echo $NVM_DIR
+                    echo "export NVM_DIR=$NVM_DIR" >> ~/.bashrc
+                    cat ~/.bashrc
+                    echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bashrc
+                    cat ~/.bashrc
+                    '''
+                    
+                    // Source NVM and install Node.js
+                    sh '''
+                    source ~/.bash_rc
+                    nvm install 18
+                    nvm use 18
+                    nvm ls
+                    '''
+                                     
+                    // Source NVM and install Node.js
+                    sh '''
+                    source ~/.bash_rc
+                    nvm install 18
+                    nvm use 18
+                    nvm ls
+                    '''
                 }
             }
         }
