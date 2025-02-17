@@ -28,7 +28,7 @@ pipeline {
                       // Source NVM and install Node.js
                       sh '''
                       #!/bin/bash
-                      source $NVM_DIR/.bash_rc
+                      source /var/lib/jenkins/.bash_rc
                       nvm install 18
                       nvm use 18
                       nvm ls
