@@ -11,10 +11,11 @@ pipeline {
                 script {
                     // Download and install NVM
                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
-                    sh 'here'
+                    sh 'echo here'
                     // Add NVM to the environment
                     sh '''
                     unset NVM_DIR
+                    echo 'NVM_DIR:'$NVM_DIR
                     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
                     echo $NVM_DIR
                     echo "export NVM_DIR=$NVM_DIR" >> ~/.bash_rc
