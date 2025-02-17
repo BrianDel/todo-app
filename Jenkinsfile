@@ -20,15 +20,12 @@ pipeline {
                       sh '''
                       #!/bin/bash
                       export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-                      echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bashrc
-                      echo "---------"
-                      cat ~/.bashrc
+                      echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\""
                       '''
                       
                       // Source NVM and install Node.js
                       sh '''
                       #!/bin/bash
-                      source /var/lib/jenkins/.bash_rc
                       nvm install 18
                       nvm use 18
                       nvm ls
