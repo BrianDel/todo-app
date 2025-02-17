@@ -17,6 +17,8 @@ pipeline {
                     sh '''
                     unset NVM_DIR
                     echo 'NVM_DIR:'$NVM_DIR
+                    '''
+                    sh '''
                     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
                     echo $NVM_DIR
                     echo "export NVM_DIR=$NVM_DIR" >> ~/.bash_rc
