@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Download and install NVM
-                    dir("${JENKINS_HOME}") {
+                    dir("${WORKSPACE}") {
                         sh 'curl -o ${JENKINS_HOME}/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh'
                       sh '''
                       unset NVM_DIR
