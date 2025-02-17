@@ -30,7 +30,7 @@ pipeline {
                       // Source NVM and install Node.js
                       sh '''
                       #!/bin/bash
-                      source ~/.bash_rc
+                      source $NVM_DIR/.bash_rc
                       nvm install 18
                       nvm use 18
                       nvm ls
