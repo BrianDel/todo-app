@@ -11,7 +11,6 @@ pipeline {
                 script {
                     // Download and install NVM
                     sh 'echo here1'
-                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
                     sh 'echo here2'
                     // Add NVM to the environment
                     sh '''
@@ -27,6 +26,7 @@ pipeline {
                     cat ~/.bash_rc
                     '''
                     
+                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
                     // Source NVM and install Node.js
                     sh '''
                     source ~/.bash_rc
