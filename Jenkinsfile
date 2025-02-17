@@ -10,8 +10,8 @@ pipeline {
             steps {
                 script {
                     // Download and install NVM
-                    sh 'echo here1'
-                    sh 'echo here2'
+                    sh 'echo $WORKSPACE'
+                    sh 'pwd'
                     // Add NVM to the environment
                     sh '''
                     unset NVM_DIR
