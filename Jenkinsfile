@@ -16,13 +16,13 @@ pipeline {
                     sh '''
                     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    echo "export NVM_DIR=$NVM_DIR" >> ~/.bashrc
-                    echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bashrc
+                    echo "export NVM_DIR=$NVM_DIR" >> ~/.bash_rc
+                    echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bash_rc
                     '''
                     
                     // Source NVM and install Node.js
                     sh '''
-                    source ~/.bashrc
+                    source ~/.bash_rc
                     nvm install 18
                     nvm use 18
                     nvm ls
@@ -43,6 +43,7 @@ pipeline {
             steps {
                 script {
                     // Run the project in the background
+                    sh 'npm run stop'
                     sh 'npm run start'
                 }
             }
