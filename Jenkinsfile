@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Download and install NVM
                     sh 'cd $JENKINS_HOME'
-                    sh 'here'
+                    sh 'echo here'
                     sh 'pwd'
                     // Add NVM to the environment
                     sh '''
