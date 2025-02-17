@@ -15,7 +15,6 @@ pipeline {
                     // Add NVM to the environment
                     sh '''
                     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"
                     echo "export NVM_DIR=$NVM_DIR" >> ~/.bash_rc
                     echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bash_rc
                     '''
