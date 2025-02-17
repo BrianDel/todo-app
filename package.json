@@ -5,12 +5,12 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "start": "lerna run start"
+    "start": "lerna run start",
+    "stop": "forever stopall"
   },
-  "dependencies": {},
   "devDependencies": {
     "lerna": "^7.2.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "forever": "^4.0.3"    
   }
 }
