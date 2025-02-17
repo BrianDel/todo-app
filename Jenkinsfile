@@ -20,8 +20,6 @@ pipeline {
                       sh '''
                       #!/bin/bash
                       export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-                      echo $NVM_DIR
-                      echo "export NVM_DIR=$NVM_DIR" >> ~/.bashrc
                       cat ~/.bashrc
                       echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bashrc
                       cat ~/.bashrc
