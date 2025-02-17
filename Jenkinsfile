@@ -13,7 +13,7 @@ pipeline {
                     dir("${WORKSPACE}") {
                       sh '''
                       #!/bin/bash
-                      curl -o ${JENKINS_HOME}/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh
+                      curl -o ${JENKINS_HOME}/.nvm/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh
                       unset NVM_DIR
                       echo 'NVM_DIR:'$NVM_DIR
                       '''
