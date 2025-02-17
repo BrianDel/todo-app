@@ -10,8 +10,8 @@ pipeline {
             steps {
                 script {
                     // Download and install NVM
-                    sh 'echo $WORKSPACE'
-                    sh 'pwd'
+                    sh 'cd $JENKINS_HOME'
+                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
                     // Add NVM to the environment
                     sh '''
                     unset NVM_DIR
@@ -26,7 +26,6 @@ pipeline {
                     cat ~/.bash_rc
                     '''
                     
-                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
                     // Source NVM and install Node.js
                     sh '''
                     source ~/.bash_rc
@@ -41,6 +40,7 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
+                    sh 'cd $WORKSPACE'
                     sh 'rm -rf ./package-lock.json'
                     sh 'npm install --verbose'
                 }
