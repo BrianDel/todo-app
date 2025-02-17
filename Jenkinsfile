@@ -13,7 +13,6 @@ pipeline {
                     sh 'cd $JENKINS_HOME'
                     sh 'here'
                     sh 'pwd'
-                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
                     // Add NVM to the environment
                     sh '''
                     unset NVM_DIR
@@ -27,6 +26,7 @@ pipeline {
                     echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bash_rc
                     cat ~/.bash_rc
                     '''
+                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
                     
                     // Source NVM and install Node.js
                     sh '''
