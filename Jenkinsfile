@@ -10,8 +10,9 @@ pipeline {
             steps {
                 script {
                     // Download and install NVM
+                    sh 'echo here1'
                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash'
-                    sh 'echo here'
+                    sh 'echo here2'
                     // Add NVM to the environment
                     sh '''
                     unset NVM_DIR
