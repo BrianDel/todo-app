@@ -12,34 +12,38 @@ pipeline {
                     // Download and install NVM
                     dir("${WORKSPACE}") {
                       sh '''
+                      #!/bin/bash
                       curl -o ${JENKINS_HOME}/install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh
                       unset NVM_DIR
                       echo 'NVM_DIR:'$NVM_DIR
-                      '''#!/bin/bash
+                      '''
                       sh '''
+                      #!/bin/bash
                       export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
                       echo $NVM_DIR
                       echo "export NVM_DIR=$NVM_DIR" >> ~/.bashrc
                       cat ~/.bashrc
                       echo "[ -s \\"$NVM_DIR/nvm.sh\\" ] && \\. \\"$NVM_DIR/nvm.sh\\"" >> ~/.bashrc
                       cat ~/.bashrc
-                      '''#!/bin/bash
+                      '''
                       
                       // Source NVM and install Node.js
                       sh '''
+                      #!/bin/bash
                       source ~/.bash_rc
                       nvm install 18
                       nvm use 18
                       nvm ls
-                      '''#!/bin/bash
+                      '''
                                       
                       // Source NVM and install Node.js
                       sh '''
+                      #!/bin/bash
                       source ~/.bash_rc
                       nvm install 18
                       nvm use 18
                       nvm ls
-                      '''#!/bin/bash
+                      '''
                     } 
                 }
             }
