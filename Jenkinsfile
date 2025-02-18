@@ -16,10 +16,10 @@ pipeline {
 
     stages {
         stage('Install Dependencies') {
+            when {
+                expression { params.OPERATION == 'build&deploy' }
+            }
             steps {
-                when {
-                    expression { params.OPERATION == 'build&deploy' }
-                }
                 script {
                     // Install project dependencies
                     sh 'rm -rf ./package-lock.json'
