@@ -11,14 +11,14 @@ pipeline {
     }
 
     parameters {
-        choice(name: 'OPERATION', choices:['build&deploy','stop','start'], description:'What operation do you want to carry out?')
+        choice(name: 'OPERATION', choices:['build&deploy','stop','start'], default:'buld&deploy', description:'What operation do you want to carry out?')
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
                 when {
-                    expression { params.OPERATION == 'build &  deploy' }
+                    expression { params.OPERATION == 'build&deploy' }
                 }
                 script {
                     // Install project dependencies
@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Run Project') {
             when {
-                expression { params.OPERATION == 'build &  deploy' || params.OPERATION == 'start'}
+                expression { params.OPERATION == 'build&deploy' || params.OPERATION == 'start'}
             }
             steps {
                 script {
