@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "forever start -c vite .",
+    "start": "forever start --minUptime 1000 --spinSleepTime 1000 -c vite .",
     "stop": "forever stopall",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
