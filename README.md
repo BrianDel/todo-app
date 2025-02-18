@@ -18,10 +18,11 @@ Currently, two official plugins are available:
 
 
 ### Prerequisites
- - VM on azure - with port 8080 (Jenkins), 3000 (server), 5173(client) open
+ - VM on azure 
+   - min RAM 4g required to support running npm install
+   - with port 8080 (Jenkins), 3000 (server), 5173(client) open
  - Jenkins installed
- - NodeJS install and using v18 latest.
- - NPM installed compatible with Node
+   - with NodeJS add via Tools
 
 ### Connecting to machine
 Assuming you have the key

@@ -7,17 +7,19 @@ pipeline {
 
     environment {
         NVM_DIR = "${WORKSPACE}/.nvm"
-        MY_PARAM = "${params.MY_PARAM}"
+        OPERATION = "${params.OPERATION}"
     }
 
     parameters {
-        string(name: 'MY_PARAM', defaultValue: 'default_value', description: 'Description of my parameter')
-        booleanParam(name: 'MY_BOOLEAN_PARAM', defaultValue: true, description: 'Description of my boolean parameter')
+        choice(name: 'OPERATION', choices:['build &  deploy','stop','start'], description:'What operation do you want to carry out?')
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
+                when {
+                    expression { params.OPERATION == 'build &  deploy' }
+                }
                 script {
                     // Install project dependencies
                     sh 'rm -rf ./package-lock.json'
@@ -26,7 +28,21 @@ pipeline {
                 }
             }
         }
+        stage('Stop Servers') {
+            when {
+                expression { params.OPERATION == 'stop' }
+            }
+            steps {
+                script {
+                    // Stop the project
+                    sh 'npm run stop'
+                }
+            }
+        }
         stage('Run Project') {
+            when {
+                expression { params.OPERATION == 'build &  deploy' || params.OPERATION == 'start'}
+            }
             steps {
                 script {
                     // Run the project in the background
