@@ -11,7 +11,7 @@ pipeline {
     }
 
     parameters {
-        choice(name: 'OPERATION', choices:['build&deploy','stop','start'], default:'buld&deploy', description:'What operation do you want to carry out?')
+        choice(name: 'OPERATION', choices:['build&deploy','stop','start'], defaultValue: 'build&deploy', description:'What operation do you want to carry out?')
     }
 
     stages {
