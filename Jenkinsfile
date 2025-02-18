@@ -46,6 +46,7 @@ pipeline {
             steps {
                 script {
                     // Run the project in the background
+                    sh 'npm run build'
                     sh 'npm run stop'
                     sh 'npm run start'
                 }
