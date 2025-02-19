@@ -2,16 +2,17 @@ pipeline {
     agent any
 
     tools {
-      nodejs 'v18'
+        nodejs 'v18'
     }
 
     environment {
         NVM_DIR = "${WORKSPACE}/.nvm"
         OPERATION = "${params.OPERATION}"
+        PATH = "${env.PATH}:/usr/local/bin:/usr/local/lib/node_modules/pm2/bin"
     }
 
     parameters {
-        choice(name: 'OPERATION', choices:['build&deploy','stop','start'], description:'What operation do you want to carry out?')
+        choice(name: 'OPERATION', choices: ['build&deploy', 'stop', 'start'], defaultValue: 'build&deploy', description: 'What operation do you want to carry out?')
     }
 
     stages {
@@ -22,9 +23,7 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    sh 'rm -rf ./package-lock.json'
                     sh 'npm install --verbose'
-                    
                 }
             }
         }
@@ -34,21 +33,19 @@ pipeline {
             }
             steps {
                 script {
-                    // Stop the project
-                    sh 'npm run stop'
+                    // Stop the project using pm2
+                    sh 'pm2 stop all'
                 }
             }
         }
         stage('Run Project') {
             when {
-                expression { params.OPERATION == 'build&deploy' || params.OPERATION == 'start'}
+                expression { params.OPERATION == 'build&deploy' || params.OPERATION == 'start' }
             }
             steps {
                 script {
-                    // Run the project in the background
-                    sh 'npm run build'
-                    sh 'npm run stop'
-                    sh 'npm run start'
+                    // Run the project in the background using pm2
+                    sh 'pm2 start npm --name "vite-project" -- run start'
                 }
             }
         }
