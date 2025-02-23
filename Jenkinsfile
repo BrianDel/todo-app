@@ -8,7 +8,7 @@ pipeline {
     environment {
         NVM_DIR = "${WORKSPACE}/.nvm"
         OPERATION = "${params.OPERATION}"
-        PATH = "${env.PATH}:/usr/local/bin:/usr/local/lib/node_modules/pm2/bin"
+        PATH = "${env.PATH}:${HOME}/.npm-global/bin"
     }
 
     parameters {
