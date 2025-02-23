@@ -25,6 +25,7 @@ pipeline {
                     // Install project dependencies
                     sh 'mkdir -p "${HOME}/.npm-global"'
                     sh 'npm config set prefix "${HOME}/.npm-global"'
+                    sh 'npm install -g pm2'
                     sh 'npm install --verbose'
                 }
             }
