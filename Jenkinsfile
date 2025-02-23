@@ -23,6 +23,8 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
+                    sh 'mkdir -p "${HOME}/.npm-global"'
+                    sh 'npm config set prefix "${HOME}/.npm-global"'
                     sh 'npm install --verbose'
                 }
             }
